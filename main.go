@@ -17,7 +17,7 @@ type KeysPeerID struct {
 }
 
 type KeysPeers struct {
-	Hosts []KeysPeerID `json:"hosts"`
+	Peers []KeysPeerID `json:"peers"`
 }
 
 func main() {
@@ -26,11 +26,11 @@ func main() {
 	flag.Parse()
 
 	keysPeers := KeysPeers{
-		Hosts: []KeysPeerID{},
+		Peers: []KeysPeerID{},
 	}
 
 	for i := 0; i < *c; i++ {
-		keysPeers.Hosts = append(keysPeers.Hosts, generate())
+		keysPeers.Peers = append(keysPeers.Peers, generate())
 	}
 
 	out, err := json.MarshalIndent(keysPeers, "", "  ")
